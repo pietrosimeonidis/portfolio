@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pietro Simeonidis | Senior Data Analyst</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #002349;
+            --gold: #957C3D;
+            --light-blue: #00477A;
+            --cream: #F5F2E8;
+            --dark-text: #1E1E24;
+            --light-text: #F7F7FF;
+            --accent: #D4AF37;
+            --success: #3BB273;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--cream);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--primary-blue);
+            color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+            display: flex;
+            gap: 30px;
+        }
+
+        .sidebar {
+            width: 320px;
+            flex-shrink: 0;
+        }
+
+        .main-content {
+            flex: 1;
+        }
+
+        /* Profile Card */
+        .profile-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--gold);
+            margin: 0 auto 20px;
+        }
+
+        .profile-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--primary-blue);
+        }
+
+        .profile-title {
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .profile-location {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: var(--dark-text);
+            margin-bottom: 20px;
+        }
+
+        .availability-badge {
+            display: inline-block;
+            background: rgba(149, 124, 61, 0.15);
+            color: var(--gold);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-blue);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        /* Info Sections */
+        .info-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .info-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(149, 124, 61, 0.1);
+            color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .info-content {
+            color: var(--dark-text);
+        }
+
+        .info-content a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .info-content a:hover {
+            color: var(--gold);
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .skill-tag {
+            background: rgba(0, 35, 73, 0.1);
+            color: var(--primary-blue);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Portfolio Section */
+        .portfolio-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 30px
+        }
+
+        .portfolio-filters {
+            display: flex;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--dark-text);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .portfolio-info {
+            padding: 20px;
+        }
+
+        .portfolio-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+        }
+
+        .portfolio-info p {
+            color: var(--dark-text);
+            margin-bottom: 15px;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin: 10px 0;
+        }
+
+        .portfolio-tag {
+            font-size: 0.7rem;
+            background: rgba(149, 124, 61, 0.1);
+            color: var(--gold);
+            padding: 4px 10px;
+            border-radius: 15px;
+        }
+
+        .portfolio-link {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .portfolio-link:hover {
+            background: var(--gold);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                margin-top: 80px;
+            }
+            
+            .sidebar {
+                width: 100%;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .portfolio-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .portfolio-filters {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Pietro<span>Simeonidis</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar with profile information -->
+        <aside class="sidebar">
+            <div class="profile-card">
+                <img src="images/myphoto.jpg" alt="Pietro Simeonidis" class="profile-image">
+                <h1 class="profile-name">Pietro Simeonidis</h1>
+                <p class="profile-title">Senior Data Analyst</p>
+                <div class="profile-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Garopaba, Brazil</span>
+                </div>
+                <div class="availability-badge">
+                    <i class="fas fa-globe-americas"></i> Open to remote work & relocation
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://github.com/pietrosimeonidis" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/pietro-simeonidis/" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fas fa-file-download"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <h3 class="section-title"><i class="fas fa-address-card"></i> Contact Info</h3>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-content">
+                        <a href="mailto:pietrosimeonidiss2@gmail.com">pietrosimeonidiss2@gmail.com</a>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="info-content">
+                        <a href="tel:+5551999135727">+55 (51) 99913-5727</a>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        Garopaba, Santa Catarina - Brazil
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <h3 class="section-title"><i class="fas fa-code"></i> Skills</h3>
+                
+                <div class="skills-container">
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">Data Visualization</span>
+                    <span class="skill-tag">Statistical Analysis</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">ETL Processes</span>
+                    <span class="skill-tag">Big Data</span>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <h3 class="section-title"><i class="fas fa-language"></i> Languages</h3>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <div class="info-content">Portuguese (Native)</div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <div class="info-content">English (Fluent)</div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <div class="info-content">Spanish (Intermediate)</div>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <h3 class="section-title"><i class="fas fa-download"></i> Download CV</h3>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="info-content">
+                        <a href="#">English Version</a>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="info-content">
+                        <a href="#">Portuguese Version</a>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="info-content">
+                        <a href="#">Spanish Version</a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main content area -->
+        <main class="main-content">
+            <section id="about" class="info-section">
+                <h3 class="section-title"><i class="fas fa-user"></i> About Me</h3>
+                <p>I'm a Senior Data Analyst with 5+ years of experience specializing in business intelligence, statistical analysis, and data visualization. I transform complex data into clear, actionable strategies that drive business growth and efficiency.</p>
+                <p>My approach combines technical expertise with business acumen, ensuring that analyses are not just statistically sound but also relevant and actionable for stakeholders.</p>
+            </section>
+            
+            <section id="portfolio" class="info-section">
+                <div class="portfolio-header">
+                    <h3 class="section-title"><i class="fas fa-briefcase"></i> Portfolio</h3>
+                    <div class="portfolio-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="data-viz">Data Visualization</button>
+                        <button class="filter-btn" data-filter="bi">Business Intelligence</button>
+                        <button class="filter-btn" data-filter="ml">Machine Learning</button>
+                    </div>
+                </div>
+                
+                <div class="portfolio-grid">
+                    <!-- Project 1 -->
+                    <div class="portfolio-item" data-category="data-viz">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Sales Dashboard" class="portfolio-img">
+                        <div class="portfolio-info">
+                            <h3>Sales Performance Dashboard</h3>
+                            <p>Interactive dashboard providing real-time sales metrics and performance indicators for a retail company.</p>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Tableau</span>
+                                <span class="portfolio-tag">SQL</span>
+                                <span class="portfolio-tag">Data Visualization</span>
+                            </div>
+                            <a href="#" class="portfolio-link">View Project</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="portfolio-item" data-category="ml">
+                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Customer Churn Prediction" class="portfolio-img">
+                        <div class="portfolio-info">
+                            <h3>Customer Churn Prediction</h3>
+                            <p>Machine learning model that predicts customer churn with 92% accuracy, helping reduce attrition by 15%.</p>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Python</span>
+                                <span class="portfolio-tag">Scikit-learn</span>
+                                <span class="portfolio-tag">Machine Learning</span>
+                            </div>
+                            <a href="#" class="portfolio-link">View Project</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="portfolio-item" data-category="data-viz">
+                        <img src="https://images.unsplash.com/photo-1564429238817-393bd4286b2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1167&q=80" alt="COVID-19 Visualization" class="portfolio-img">
+                        <div class="portfolio-info">
+                            <h3>COVID-19 Data Visualization</h3>
+                            <p>Interactive visualization of pandemic data showing trends, hotspots, and vaccination rates globally.</p>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">D3.js</span>
+                                <span class="portfolio-tag">JavaScript</span>
+                                <span class="portfolio-tag">Data Visualization</span>
+                            </div>
+                            <a href="#" class="portfolio-link">View Project</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 4 -->
+                    <div class="portfolio-item" data-category="bi">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Financial Analysis" class="portfolio-img">
+                        <div class="portfolio-info">
+                            <h3>Financial Analysis System</h3>
+                            <p>Comprehensive financial analysis platform for investment tracking and portfolio performance evaluation.</p>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">R</span>
+                                <span class="portfolio-tag">Shiny</span>
+                                <span class="portfolio-tag">Business Intelligence</span>
+                            </div>
+                            <a href="#" class="portfolio-link">View Project</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 5 -->
+                    <div class="portfolio-item" data-category="ml">
+                        <img src="https://images.unsplash.com/photo-1563014959-7aaa83350992?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1173&q=80" alt="Recommendation Engine" class="portfolio-img">
+                        <div class="portfolio-info">
+                            <h3>E-commerce Recommendation Engine</h3>
+                            <p>Personalized product recommendation system that increased conversion rates by 22% for an online retailer.</p>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Python</span>
+                                <span class="portfolio-tag">TensorFlow</span>
+                                <span class="portfolio-tag">Machine Learning</span>
+                            </div>
+                            <a href="#" class="portfolio-link">View Project</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 6 -->
+                    <div class="portfolio-item" data-category="bi">
+                        <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Social Media Analytics" class="portfolio-img">
+                        <div class="portfolio-info">
+                            <h3>Social Media Analytics Dashboard</h3>
+                            <p>Comprehensive analytics platform tracking engagement, reach, and conversion across multiple social channels.</p>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Power BI</span>
+                                <span class="portfolio-tag">API Integration</span>
+                                <span class="portfolio-tag">Business Intelligence</span>
+                            </div>
+                            <a href="#" class="portfolio-link">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="contact" class="info-section">
+                <h3 class="section-title"><i class="fas fa-envelope"></i> Contact</h3>
+                <p>Feel free to reach out if you want to collaborate on something exciting. Big ideas start with small conversations.</p>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                    <div class="info-content">
+                        <a href="mailto:pietrosimeonidiss2@gmail.com">pietrosimeonidiss2@gmail.com</a>
+                    </div>
+                </div>
+                
+                <div class="social-links" style="justify-content: flex-start; margin-top: 20px;">
+                    <a href="https://github.com/pietrosimeonidis" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/pietro-simeonidis/" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Portfolio filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    const filter = button.getAttribute('data-filter');
+                    
+                    portfolioItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
